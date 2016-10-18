@@ -26,19 +26,6 @@ int searchVector(vector<int> vec, int number){
 }
 
 template <size_t N>
-int* sortArray(int(&arr)[N]){
-	int sortedArr[N];
-	for (auto sorted : sortedArr){
-		int lowest = arr[0];
-		int highest = arr[0];
-		for (auto num : arr){
-
-		}
-	}
-	return sortedArr;
-}
-
-template <size_t N>
 vector<NumAmount> sortNumbers(int(&numbers)[N]){
 	vector<NumAmount> sortedNumbers;
 	vector<int> foundNumbers;
