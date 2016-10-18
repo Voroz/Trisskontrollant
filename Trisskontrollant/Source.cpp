@@ -3,16 +3,17 @@
 
 using namespace std;
 
-class Vector2{
+
+class NumAmount{
 public:
-	Vector2() :
-		x(0),
-		y(0){};
-	Vector2(int x, int y) :
-		x(x),
-		y(y){};
-	int x;
-	int y;
+	NumAmount() :
+		number(0),
+		amount(1){};
+	NumAmount(int number, int amount) :
+		number(number),
+		amount(amount){};
+	int number;
+	int amount;
 };
 
 int searchVector(vector<int> vec, int number){
@@ -24,40 +25,42 @@ int searchVector(vector<int> vec, int number){
 	return -1;
 }
 
-Vector2 search2dVector(vector<vector<int>> vec, int number){
-	for (int i = 0; i < vec.size(); i++){
-		for (int j = 0; j < vec[i].size(); j++){
-			if (vec[i][j] == number){
-				return Vector2(i, j);
-			}
+template <size_t N>
+int* sortArray(int(&arr)[N]){
+	int sortedArr[N];
+	for (auto sorted : sortedArr){
+		int lowest = arr[0];
+		int highest = arr[0];
+		for (auto num : arr){
+
 		}
 	}
-	return Vector2(-1, -1);
+	return sortedArr;
 }
 
 template <size_t N>
-vector<vector<int>> sortNumbers(int(&numbers)[N]){
-	vector<vector<int>> sortedNumbers;
+vector<NumAmount> sortNumbers(int(&numbers)[N]){
+	vector<NumAmount> sortedNumbers;
 	vector<int> foundNumbers;
 	for (int i = 0; i < N; i++){
 		int searchResult = searchVector(foundNumbers, numbers[i]);
 		if (searchResult == -1){
 			foundNumbers.push_back(numbers[i]);
-			vector<int> newVec = { numbers[i] };
-			sortedNumbers.push_back(newVec);
+			NumAmount newNum(numbers[i], 1);
+			sortedNumbers.push_back(newNum);
 			continue;
 		}
-		sortedNumbers[searchResult].push_back(numbers[i]);
+		sortedNumbers[searchResult].amount += 1;
 	}
 	return sortedNumbers;
 }
 
 template <size_t N>
 int checkTriss(int (&trissArr)[N]){
-	vector<vector<int>> sortedNumbers = sortNumbers(trissArr);
+	vector<NumAmount> sortedNumbers = sortNumbers(trissArr);
 	for (auto sn : sortedNumbers){
-		if (sn.size() >= 3){
-			return sn[0];
+		if (sn.amount >= 3){
+			return sn.number;
 		}
 	}
 	return 0;
