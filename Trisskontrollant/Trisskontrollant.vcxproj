@@ -64,7 +64,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="ragnarsTest.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Triss.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ragnarsTest.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="triss.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
